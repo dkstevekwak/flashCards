@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flash Cards</title>
+        <!-- We've provided some styles for you, aren't we nice? -->
+        <link rel="stylesheet" type="text/css" href="reset.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans|Open+Sans' rel='stylesheet' type='text/css'>
+        <script src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <script src="js/lib/angular.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/controllers/MainController.js"></script>
+        <script src="js/factories/ScoreFactory.js"></script>
+        <script src="js/directives/loader/loader.js"></script>
+        <script src="js/directives/flashCard/flashCard.js"></script>
+        <script src="js/directives/borderOnHover.js"></script>
+        <script src="js/controllers/NewCardController.js"></script>
+        <script src="js/factories/NewCardFactory.js"></script>
+        <script src="js/directives/errorDirective.js"></script>
+        <script src="js/factories/populateCards.js"></script>
+
+    </head>
+    <body ng-app="FlashCardApp">
+        
+       
+
+        <div ng-controller="MainController">
+            <div class='category-button-container'>
+                <button class="category-button" ng-repeat="category in categories" ng-click="getCategoryCards(category)" ng-class='{active: category===categorySelected}'>{{category}}
+                </button>
+            </div>
+            <div class="stat-controller" ng-controller="StatsController" id="statistics" ng-include="'/templates/stats.html'">
+            
+            </div>
+            
+            
+            <flash-card card="flashCard" class="flash-card" ng-repeat="flashCard in flashCards | orderBy:'question'">
+            </flash-card>
+
+            
+
+
+            <loader id="loader" ng-hide="flashCards.length"></loader>
+        </div>
+            <div ng-controller="NewCardController">
+             <form name="newCardForm" ng-submit="newCardForm.$valid && sendNewCard(newCard)">
+                    <error ng-show= "newCardForm.$submitted && newCardForm.questionField.$invalid"> Question is required</error> <br/>
+                    <error ng-show= "newCardForm.$submitted && newCardForm.questionField.$error.minlength"> Your question is too short</error> <br/>
+                    Question: <input type='text' name='questionField'placeholder='question' ng-model='newCard.question' required ng-minlength='15'/> <br/>
+                    <error ng-show= "newCardForm.$submitted && newCardForm.categoryField.$invalid"> Category is required</error> <br/>
+
+                    
+                
+                    Category: <select name='categoryField' ng-model='newCard.category' required> 
+                                <option> MongoDB</option>
+                                <option> Express</option>
+                                <option> Angular</option>
+                                <option> Node</option>
+                              </select>
+                    <br/>
+
+                    <input type="checkbox" name="correct" ng-click='optionClick(0);' value="correct" ng-model='newCard.answers[0].correct'/><input type='text'  ng-model='newCard.answers[0].text' ng-maxlength='40'/> 
+                    <br/>
+                    <input type="checkbox" name="correct" value="correct" ng-click='optionClick(1);' ng-model='newCard.answers[1].correct'/><input type='text'  ng-model='newCard.answers[1].text' ng-maxlength='40'/> 
+                    <br/>
+                    <input type="checkbox" name="correct" value="correct" ng-click='optionClick(2);' ng-model='newCard.answers[2].correct'/><input type='text' ng-model='newCard.answers[2].text' ng-maxlength='40'/> 
+                    <br/>
+                    <button type='submit'>submit</button>
+                    <!-- sendMeCard() used to be in button but now moved up to 'form' -->
+                    
+                </form>
+            </div>
+    </body>
+</html>
