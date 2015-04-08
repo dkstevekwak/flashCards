@@ -1,6 +1,11 @@
 * {
   box-sizing: border-box; }
 
+.menu {
+  float: left;
+  margin-right: 20px;
+  font-size: 2em; }
+
 #loader img {
   margin: 0 auto;
   display: block; }

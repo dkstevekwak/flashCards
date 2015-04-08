@@ -25,10 +25,11 @@
         <span ng-show="!answeredCorrectly && !alreadyAnswered">Nope, you got it wrong.</span>
         <span ng-show="alreadyAnswered">You already answered!</span>
     </h2>
+<button ng-click='editListner()'>edit</button>
  </section>
  <section id='mainRight' ng-show="answeredCorrectly===false && answered">
 <span class="glyphicon glyphicon-remove-circle" aria-hidden="false"></span>
 </section>
-<section id='main'>
+<edit ng-show='isEditing'></edit>
 
 

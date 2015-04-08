@@ -8,7 +8,12 @@ app.directive('flashCard', function(ScoreFactory){
 		link: function(scope, element, attrs){
 			scope.answeredCorrectly;
 			scope.answered;
+			scope.isEditing = false;
 			scope.alreadyAnswered = false;
+			scope.editListner = function(){
+				if(!scope.isEditing) scope.isEditing = true;
+				else scope.isEditing = false;
+			}
 				
 				scope.answerQuestion =function (answer){
 					if(!scope.answered) {

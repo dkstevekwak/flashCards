@@ -1,16 +1,18 @@
-app.controller('MainController', function($scope, FlashCardsFactory){
+app.controller('MainController', function($scope,$state, FlashCardsFactory){
 	$scope.categories = [
+    'All',
     'MongoDB',
     'Express',
     'Angular',
-    'Node',
-    'Reset'
+    'Node'
 ];
-
+	$scope.consoles = function(category){
+		console.log(category);
+	}
 	$scope.categorySelected;
 
 	$scope.getCategoryCards = function(category){
-		if(category === 'Reset'){ 
+		if(category === 'All'){ 
 		$scope.flashCards = [];
 		FlashCardsFactory.getFlashCards().then(function (receivedCards){
 		$scope.flashCards = FlashCardsFactory.localFlashcards;
@@ -29,6 +31,12 @@ app.controller('MainController', function($scope, FlashCardsFactory){
 		$scope.flashCards = FlashCardsFactory.localFlashcards;
 	})
 
+
+	$scope.switchToCategoryPage = function(category){
+		console.log(category)
+		$state.go('flashcard.category', {categoryName: category});
+	};
+	        
 
 
 

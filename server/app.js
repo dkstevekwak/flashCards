@@ -83,6 +83,20 @@ app.post('/cards', function(req,res,next){
 
 })
 
+app.put('/cards/:flashCardId', function(req,res,next){
+  var flashCardId = req.params.flashCardId;
+  var body = req.body;
+
+  FlashCardModel.findById(flashCardId, function(err,card){
+    card.question=body.question;
+    card.category=body.category;
+    card.answers=body.answers;
+    console.log(card);
+    card.save(function(err){
+      res.json(card);
+      });
+  });
+});    
 
 
 
