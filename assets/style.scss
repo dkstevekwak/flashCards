@@ -7,9 +7,33 @@
     clear: both;
   }
 }
-
+.nav {
+  cursor: pointer;
+}
 * {
   box-sizing: border-box;
+}
+edit {
+  text-align: center;
+  select {
+    width:300px;
+  }
+  input[type='text'] {
+    width:300px;
+  }
+}
+#wrapper {
+    background: url('images/golden-retriever-puppy-wide.jpg') no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 900px;
+  h1 {
+    color: white;
+    padding-left:47%;
+    padding-top:8%;
+  }
 }
 
 .menu {

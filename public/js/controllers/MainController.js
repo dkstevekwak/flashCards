@@ -29,13 +29,16 @@ app.controller('MainController', function($scope,$state, FlashCardsFactory){
 
 	FlashCardsFactory.getFlashCards().then(function (receivedCards){
 		$scope.flashCards = FlashCardsFactory.localFlashcards;
+		
+	}).then (function(doneCards){
+		$state.go('flashcard.category', {categoryName: 'All'});
 	})
 
 
-	$scope.switchToCategoryPage = function(category){
-		console.log(category)
-		$state.go('flashcard.category', {categoryName: category});
-	};
+	// $scope.switchToCategoryPage = function(category){
+	// 	console.log(category)
+	// 	$state.go('flashcard.category', {categoryName: category});
+	// };
 	        
 
 

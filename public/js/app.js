@@ -1,5 +1,5 @@
 
-var app = angular.module('FlashCardApp',['ui.router']);
+var app = angular.module('FlashCardApp',['ngAnimate','ui.router']);
 
 
 

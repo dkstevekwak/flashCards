@@ -1,5 +1,27 @@
+.nav {
+  cursor: pointer; }
+
 * {
   box-sizing: border-box; }
+
+edit {
+  text-align: center; }
+  edit select {
+    width: 300px; }
+  edit input[type='text'] {
+    width: 300px; }
+
+#wrapper {
+  background: url('images/golden-retriever-puppy-wide.jpg') no-repeat center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 900px; }
+  #wrapper h1 {
+    color: white;
+    padding-left: 47%;
+    padding-top: 8%; }
 
 .menu {
   float: left;

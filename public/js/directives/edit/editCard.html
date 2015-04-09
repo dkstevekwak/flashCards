@@ -1,6 +1,5 @@
 <div ng-controller="NewCardController">
  <form name="newCardForm" novalidate>
-        <span ng-show='isEditing' data>{{card._id}}</span>
         <error ng-show= "newCardForm.$submitted && newCardForm.questionField.$error.required"> Question is required</error> <br/>
         <error ng-show= "newCardForm.$submitted && newCardForm.questionField.$error.minlength"> Your question is too short</error> <br/>
         Question: <input type='text' name='questionField'placeholder='question' ng-model='newCard.question' required ng-minlength='15'/> <br/>
