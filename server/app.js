@@ -38,9 +38,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // If we're hitting our home page, serve up our index.html file!
-app.get('/', function (req, res) {
-    res.sendFile(indexHtmlPath);
-});
+
 
 app.get('/cards', function (req, res) {
 
@@ -98,5 +96,7 @@ app.put('/cards/:flashCardId', function(req,res,next){
   });
 });    
 
-
+app.get('/*', function (req, res) {
+    res.sendFile(indexHtmlPath);
+});
 

@@ -3,6 +3,7 @@
     <head>
         <title>Flash Cards</title>
         <!-- We've provided some styles for you, aren't we nice? -->
+        <base href="/" />
         <link rel="stylesheet" type="text/css" href="css/reset.css" />
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="stylesheet" type="text/css" href="css/animate.css" />
@@ -31,6 +32,7 @@
         
        <div class='nav'>
             <ul>
+                <li ui-sref='home' class='menu'>Home</li>
                 <li ui-sref="flashcard" class='menu'>Flashcard</li>
                 <li ui-sref="addcard" class='menu'>Addcard</li>
                 <li ui-sref="scoreboard" class='menu'>Scoreboard</li>
@@ -38,20 +40,7 @@
 
        </div>
         <ui-view>
-            <div id='wrapper'>
-                <h1>LOVE FlashCard</h1>
-            </div>
-
-
-
+            
         </ui-view>
-        
-
-            
-
-
-            
-      
-           
     </body>
 </html>

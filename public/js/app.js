@@ -1,10 +1,21 @@
 
 var app = angular.module('FlashCardApp',['ngAnimate','ui.router']);
 
-
+app.config(function ($locationProvider, $urlRouterProvider){
+	$locationProvider.html5Mode(true);
+	// $urlRouterProvider.otherwise('/');
+})
 
 
 app.config(function ($stateProvider) {
+
+	$stateProvider.state('home', {
+	    url: '/',
+	    templateUrl: '/templates/home.html',
+	    controller: function($scope, $state){
+
+	    }
+	});
 
     $stateProvider.state('addcard', {
         url: '/addcard',
@@ -25,6 +36,10 @@ app.config(function ($stateProvider) {
         url: '/flashcard',
         templateUrl: '/templates/flashcard.html',
         controller: 'MainController'
+        // abstract: true
+        // onEnter: function($stateParams, $state) {
+        // 	if($state.current.name === )
+        // }
     });
 
     $stateProvider.state('flashcard.category', {
@@ -33,7 +48,6 @@ app.config(function ($stateProvider) {
         resolve: {
         	category: function($stateParams, FlashCardsFactory){
         		if($stateParams.categoryName === 'All') {
-        			console.log(FlashCardsFactory)
         			return FlashCardsFactory.localFlashcards
         		}
         		else {
